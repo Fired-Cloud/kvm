@@ -1,0 +1,360 @@
+<!doctype html>
+<!--
+  Fired Cloud: DESIGN MOCKUP of a KVM VPS hosting landing page.
+  Static preview for checking the visual design only. Prices, locations,
+  server data and the control panel are placeholders; nothing here orders,
+  bills or controls real servers. No analytics or trackers are included.
+-->
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fired Cloud</title>
+<meta name="description" content="KVM-серверы на NVMe с защитой от DDoS. Запуск за 60 секунд.">
+<meta name="theme-color" content="#150d0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Onest:wght@400;500;600&family=Unbounded:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23ff6a2b' d='M16 2c1.5 5.5 9 8 9 16.5a9 9 0 0 1-18 0c0-3.6 1.6-6.2 3.6-8 0 3.2 1.6 5 3.4 5 0-5-2-8.5 2-13.5z'/%3E%3C/svg%3E">
+</head>
+<body>
+<!-- BODY:START -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="fg" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#c4361c"/><stop offset=".55" stop-color="#ff6a2b"/><stop offset="1" stop-color="#ffb547"/>
+    </linearGradient>
+    <symbol id="flame" viewBox="0 0 32 32"><path fill="url(#fg)" d="M16 2c1.5 5.5 9 8 9 16.5a9 9 0 0 1-18 0c0-3.6 1.6-6.2 3.6-8 0 3.2 1.6 5 3.4 5 0-5-2-8.5 2-13.5z"/><path fill="#150d0b" opacity=".55" d="M16 17c.6 2.2 3.6 3.2 3.6 6.6a3.6 3.6 0 0 1-7.2 0c0-1.6.8-2.8 1.6-3.4 0 1.2.6 2 1.3 2 0-2-.6-3.4.7-5.2z"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Fired Cloud, на главную"><svg aria-hidden="true"><use href="#flame"/></svg>Fired Cloud</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#pricing">Тарифы</a>
+      <a href="#features">Возможности</a>
+      <a href="#locations">Локации</a>
+      <a href="#panel">Панель</a>
+      <a href="#faq">Вопросы</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn btn-line btn-sm" href="#panel">Войти</a>
+      <a class="btn btn-fire btn-sm" href="#pricing">Создать сервер</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <canvas id="sparks" aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 id="hero-title">Разжигаем KVM&#8209;серверы за&nbsp;60&nbsp;секунд</h1>
+        <p class="hero-lede">Выделенные ядра, NVMe-диски и защита от DDoS в каждом тарифе. Выберите конфигурацию и город, а мы установим ОС и пришлём доступ по SSH.</p>
+        <div class="hero-actions">
+          <a class="btn btn-fire" href="#pricing">Создать сервер</a>
+          <a class="btn btn-line" href="#pricing">Сравнить тарифы</a>
+        </div>
+        <ul class="hero-facts">
+          <li>от <b>290 ₽</b> в месяц</li>
+          <li><b>6</b> дата-центров</li>
+          <li>SLA <b>99,9 %</b></li>
+          <li>оплата <b>посуточно</b></li>
+        </ul>
+      </div>
+      <div class="term" role="img" aria-label="Пример: сервер в Москве создан за 47 секунд и доступен по SSH">
+        <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+<pre><span class="p">$</span> <span class="w">fc server create --plan plamya --region msk</span>
+  образ     ubuntu-24.04
+  ресурсы   4 vCPU · 8 ГБ · 120 ГБ NVMe
+  адрес     185.212.47.19, 2a0e:8f02:21::1
+<span class="ok">✓ сервер fc-msk-web-01 запущен за 47 с</span>
+<span class="p">$</span> <span class="w">ssh root@185.212.47.19</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <div class="band-head">
+        <h2 id="pricing-title">Тарифы</h2>
+        <p>Цена фиксированная, без доплат за трафик в пределах лимита. Деньги списываются раз в сутки, поэтому сервер можно удалить в любой день.</p>
+      </div>
+      <div class="billing" role="group" aria-label="Период оплаты">
+        <button type="button" id="bill-month" aria-pressed="true" data-period="month">Помесячно</button>
+        <button type="button" id="bill-year" aria-pressed="false" data-period="year">За год<span class="save">−15 %</span></button>
+      </div>
+      <div class="tiers">
+        <article class="tier">
+          <div>
+            <div class="tier-top"><span class="tier-name">Искра</span></div>
+            <p class="tier-for">VPN, Telegram-бот, тестовый стенд</p>
+          </div>
+          <div class="price"><span class="price-num" data-month="290">290 ₽</span><span class="price-unit">/ мес</span></div>
+          <ul class="specs">
+            <li><span>vCPU</span><span>1</span></li>
+            <li><span>RAM</span><span>1 ГБ</span></li>
+            <li><span>NVMe</span><span>20 ГБ</span></li>
+            <li><span>Трафик</span><span>1 ТБ</span></li>
+          </ul>
+          <a class="btn btn-line" href="#panel">Создать сервер</a>
+        </article>
+        <article class="tier">
+          <div>
+            <div class="tier-top"><span class="tier-name">Уголь</span></div>
+            <p class="tier-for">Сайт на CMS, небольшой магазин</p>
+          </div>
+          <div class="price"><span class="price-num" data-month="690">690 ₽</span><span class="price-unit">/ мес</span></div>
+          <ul class="specs">
+            <li><span>vCPU</span><span>2</span></li>
+            <li><span>RAM</span><span>4 ГБ</span></li>
+            <li><span>NVMe</span><span>60 ГБ</span></li>
+            <li><span>Трафик</span><span>3 ТБ</span></li>
+          </ul>
+          <a class="btn btn-line" href="#panel">Создать сервер</a>
+        </article>
+        <article class="tier hot">
+          <div>
+            <div class="tier-top"><span class="tier-name">Пламя</span><span class="tier-tag">Чаще всего</span></div>
+            <p class="tier-for">Веб-приложение с базой данных</p>
+          </div>
+          <div class="price"><span class="price-num" data-month="1390">1 390 ₽</span><span class="price-unit">/ мес</span></div>
+          <ul class="specs">
+            <li><span>vCPU</span><span>4</span></li>
+            <li><span>RAM</span><span>8 ГБ</span></li>
+            <li><span>NVMe</span><span>120 ГБ</span></li>
+            <li><span>Трафик</span><span>5 ТБ</span></li>
+          </ul>
+          <a class="btn btn-fire" href="#panel">Создать сервер</a>
+        </article>
+        <article class="tier">
+          <div>
+            <div class="tier-top"><span class="tier-name">Горн</span></div>
+            <p class="tier-for">Нагруженные проекты, CI, базы</p>
+          </div>
+          <div class="price"><span class="price-num" data-month="2790">2 790 ₽</span><span class="price-unit">/ мес</span></div>
+          <ul class="specs">
+            <li><span>vCPU</span><span>8</span></li>
+            <li><span>RAM</span><span>16 ГБ</span></li>
+            <li><span>NVMe</span><span>240 ГБ</span></li>
+            <li><span>Трафик</span><span>Без лимита</span></li>
+          </ul>
+          <a class="btn btn-line" href="#panel">Создать сервер</a>
+        </article>
+      </div>
+      <p class="tiers-note">В каждом тарифе: канал 1 Гбит/с, один IPv4 и подсеть IPv6 /64, защита от DDoS и один бесплатный снапшот. Нужна другая конфигурация? Соберите её в панели: до 32 vCPU и 128 ГБ RAM.</p>
+    </div>
+  </section>
+
+  <section class="band" id="features" aria-labelledby="features-title">
+    <div class="wrap">
+      <div class="band-head">
+        <h2 id="features-title">Что внутри каждого сервера</h2>
+        <p>Мы не продаём «облачные ядра» с переподпиской. Ресурсы из тарифа закреплены за вашей машиной.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="1.5"/><rect x="3" y="13" width="18" height="7" rx="1.5"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></svg>
+          <h3>Полная виртуализация KVM</h3>
+          <p>Своё ядро, свои модули и любая ОС, включая Windows и загрузку из ISO. Соседи по хосту не влияют на ваш сервер.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="7" width="19" height="10" rx="1.5"/><path d="M6 10.5v3M9 10.5v3M12 10.5v3M16 12h3"/></svg>
+          <h3>Диски NVMe</h3>
+          <p>Enterprise NVMe в RAID-10: до 3 ГБ/с на чтение и 200 тысяч IOPS. База данных и сборки перестают ждать диск.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.5 5.6v6c0 4.6 3.1 8 7.5 9.6 4.4-1.6 7.5-5 7.5-9.6v-6L12 2.8z"/><path d="m8.8 12 2.3 2.3 4.2-4.6"/></svg>
+          <h3>Защита от DDoS</h3>
+          <p>Фильтрация атак на уровнях L3–L4 ёмкостью до 1 Тбит/с. Включена бесплатно и работает без настройки.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.5-6"/><path d="M3 3.5V8h4.5"/><path d="M12 7.5V12l3 2"/></svg>
+          <h3>Снапшоты</h3>
+          <p>Сохраните состояние сервера перед обновлением и откатитесь за пару минут, если что-то пошло не так.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.7 5.6 3.7 9s-1.2 6.4-3.7 9c-2.5-2.6-3.7-5.6-3.7-9S9.5 5.6 12 3z"/></svg>
+          <h3>IPv4 и IPv6</h3>
+          <p>Выделенный IPv4 и подсеть /64 IPv6 у каждого сервера. Обратные DNS-записи меняются в панели за минуту.</p>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17.5 8.5 12l3.5 3.5L20.5 7"/><path d="M15 7h5.5v5.5"/></svg>
+          <h3>SLA 99,9 %</h3>
+          <p>Это не больше 43 минут простоя в месяц. За каждый лишний час вернём 10 % стоимости сервера на баланс.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="locations" aria-labelledby="loc-title">
+    <div class="wrap">
+      <div class="band-head">
+        <h2 id="loc-title">Дата-центры</h2>
+        <p>Шесть площадок уровня Tier III в России и Европе, седьмая открывается в Алматы. Задержка указана до точки обмена трафиком в Москве.</p>
+      </div>
+      <div class="geo-scroll">
+        <svg class="geo" viewBox="0 0 1000 170" role="img" aria-label="Площадки по долготе: Амстердам, Франкфурт, Санкт-Петербург, Москва, Екатеринбург, Алматы, Новосибирск">
+          <g fill="#a8958b" font-size="12">
+            <line x1="40" y1="92" x2="960" y2="92" stroke="#3d2b24" stroke-width="1.5"/>
+            <line x1="40" y1="86" x2="40" y2="98" stroke="#3d2b24"/><text x="40" y="162" text-anchor="start">0°</text>
+            <line x1="346.7" y1="86" x2="346.7" y2="98" stroke="#3d2b24"/><text x="346.7" y="162" text-anchor="middle">30° в. д.</text>
+            <line x1="653.3" y1="86" x2="653.3" y2="98" stroke="#3d2b24"/><text x="653.3" y="162" text-anchor="middle">60° в. д.</text>
+            <line x1="960" y1="86" x2="960" y2="98" stroke="#3d2b24"/><text x="960" y="162" text-anchor="end">90° в. д.</text>
+          </g>
+          <g font-size="15" font-weight="600" fill="#f4e8de" text-anchor="middle">
+            <line x1="90" y1="62" x2="90" y2="92" stroke="#3d2b24"/><circle cx="90" cy="92" r="6" fill="#ff6a2b"/><text x="90" y="52">Амстердам</text>
+            <line x1="129" y1="92" x2="129" y2="118" stroke="#3d2b24"/><circle cx="129" cy="92" r="6" fill="#ff6a2b"/><text x="129" y="136">Франкфурт</text>
+            <line x1="350" y1="62" x2="350" y2="92" stroke="#3d2b24"/><circle cx="350" cy="92" r="6" fill="#ff6a2b"/><text x="350" y="52">Санкт-Петербург</text>
+            <line x1="424" y1="92" x2="424" y2="118" stroke="#3d2b24"/><circle cx="424" cy="92" r="9" fill="#ffb547"/><circle cx="424" cy="92" r="16" fill="none" stroke="#ffb547" stroke-opacity=".35"/><text x="424" y="136">Москва</text>
+            <line x1="660" y1="62" x2="660" y2="92" stroke="#3d2b24"/><circle cx="660" cy="92" r="6" fill="#ff6a2b"/><text x="660" y="52">Екатеринбург</text>
+            <line x1="826" y1="92" x2="826" y2="118" stroke="#3d2b24"/><circle cx="826" cy="92" r="6" fill="#150d0b" stroke="#ffc65c" stroke-width="2"/><text x="826" y="136" fill="#ffc65c">Алматы</text>
+            <line x1="887" y1="62" x2="887" y2="92" stroke="#3d2b24"/><circle cx="887" cy="92" r="6" fill="#ff6a2b"/><text x="887" y="52">Новосибирск</text>
+          </g>
+        </svg>
+      </div>
+      <ul class="locs">
+        <li><span class="loc-name">Москва<span class="loc-dc">Tier III, два ввода питания</span></span><span class="loc-ping">1 мс</span><span class="pill pill-ok">Работает</span></li>
+        <li><span class="loc-name">Санкт-Петербург<span class="loc-dc">Tier III, резерв N+1</span></span><span class="loc-ping">9 мс</span><span class="pill pill-ok">Работает</span></li>
+        <li><span class="loc-name">Екатеринбург<span class="loc-dc">Tier III, резерв N+1</span></span><span class="loc-ping">24 мс</span><span class="pill pill-ok">Работает</span></li>
+        <li><span class="loc-name">Новосибирск<span class="loc-dc">Tier III, резерв N+1</span></span><span class="loc-ping">48 мс</span><span class="pill pill-ok">Работает</span></li>
+        <li><span class="loc-name">Франкфурт<span class="loc-dc">Tier III, резерв 2N</span></span><span class="loc-ping">34 мс</span><span class="pill pill-ok">Работает</span></li>
+        <li><span class="loc-name">Амстердам<span class="loc-dc">Tier III, резерв 2N</span></span><span class="loc-ping">38 мс</span><span class="pill pill-ok">Работает</span></li>
+        <li><span class="loc-name">Алматы<span class="loc-dc">Tier III, запуск в декабре</span></span><span class="loc-ping">—</span><span class="pill pill-warn">Скоро</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="panel" aria-labelledby="panel-title">
+    <div class="wrap">
+      <div class="band-head">
+        <h2 id="panel-title">Панель управления</h2>
+        <p>Все серверы на одном экране: нагрузка, трафик, перезагрузка и консоль VNC, если сервер перестал отвечать по SSH.</p>
+      </div>
+      <div class="app">
+        <div class="app-bar">
+          <span class="logo"><svg aria-hidden="true"><use href="#flame"/></svg>Fired Cloud</span>
+          <span class="app-bal">Баланс <b>4 812 ₽</b>, хватит на 41 день</span>
+        </div>
+        <div class="app-body">
+          <ul class="srv-list" aria-label="Серверы">
+            <li><button type="button" class="srv" id="srv-0" data-i="0" aria-current="true"><span class="srv-name">fc-msk-web-01</span><span class="pill pill-ok" data-pill>Работает</span><span class="srv-meta">Москва, Пламя · <code>185.212.47.19</code></span></button></li>
+            <li><button type="button" class="srv" id="srv-1" data-i="1" aria-current="false"><span class="srv-name">fc-ams-vpn</span><span class="pill pill-ok" data-pill>Работает</span><span class="srv-meta">Амстердам, Искра · <code>45.137.20.8</code></span></button></li>
+            <li><button type="button" class="srv" id="srv-2" data-i="2" aria-current="false"><span class="srv-name">fc-ekb-ci-02</span><span class="pill pill-off" data-pill>Выключен</span><span class="srv-meta">Екатеринбург, Горн · <code>91.204.12.77</code></span></button></li>
+          </ul>
+          <div class="detail" aria-live="polite">
+            <div class="detail-head">
+              <h3 id="d-name">fc-msk-web-01</h3>
+              <span class="pill pill-ok" id="d-pill">Работает</span>
+              <p class="detail-sub" id="d-sub">Ubuntu 24.04 · 4 vCPU, 8 ГБ RAM · <code>185.212.47.19</code> · аптайм 38 дней</p>
+            </div>
+            <div class="power">
+              <button type="button" id="p-on" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M7 4.5v15l12-7.5z"/></svg>Включить</button>
+              <button type="button" id="p-reboot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></svg>Перезагрузить</button>
+              <button type="button" id="p-off" class="danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M12 3v8"/><path d="M6.3 6.8a8 8 0 1 0 11.4 0"/></svg>Выключить</button>
+              <button type="button" id="p-vnc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="1.5"/><path d="M8 21h8M7 9l2.5 2L7 13M12 13h4"/></svg>Консоль VNC</button>
+            </div>
+            <div class="gauges">
+              <div class="gauge">
+                <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="gauge-track" cx="50" cy="50" r="40"/><circle class="gauge-val" id="g-cpu" cx="50" cy="50" r="40" stroke-dasharray="251.3" stroke-dashoffset="155.8"/><text class="gauge-num" id="g-cpu-t" x="50" y="56" text-anchor="middle">38%</text></svg>
+                <span class="gauge-label">CPU<br><b id="g-cpu-l">1,5 из 4 ядер</b></span>
+              </div>
+              <div class="gauge">
+                <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="gauge-track" cx="50" cy="50" r="40"/><circle class="gauge-val" id="g-ram" cx="50" cy="50" r="40" stroke-dasharray="251.3" stroke-dashoffset="98"/><text class="gauge-num" id="g-ram-t" x="50" y="56" text-anchor="middle">61%</text></svg>
+                <span class="gauge-label">RAM<br><b id="g-ram-l">4,9 из 8 ГБ</b></span>
+              </div>
+              <div class="gauge">
+                <svg viewBox="0 0 100 100" aria-hidden="true"><circle class="gauge-track" cx="50" cy="50" r="40"/><circle class="gauge-val" id="g-disk" cx="50" cy="50" r="40" stroke-dasharray="251.3" stroke-dashoffset="140.7"/><text class="gauge-num" id="g-disk-t" x="50" y="56" text-anchor="middle">44%</text></svg>
+                <span class="gauge-label">NVMe<br><b id="g-disk-l">53 из 120 ГБ</b></span>
+              </div>
+            </div>
+            <div class="traffic">
+              <div class="traffic-head"><span>Исходящий трафик, 24 часа</span><span><b id="t-now">212 Мбит/с</b> сейчас</span></div>
+              <svg viewBox="0 0 300 80" preserveAspectRatio="none" aria-hidden="true">
+                <line class="spark-grid" x1="0" y1="20" x2="300" y2="20"/><line class="spark-grid" x1="0" y1="50" x2="300" y2="50"/>
+                <path class="spark-area" id="t-area" d=""/>
+                <path class="spark-line" id="t-line" d=""/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="panel-note">Выберите сервер в списке или нажмите кнопку питания, чтобы посмотреть, как меняется состояние.</p>
+    </div>
+  </section>
+
+  <section class="band" id="faq" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <div class="faq-aside">
+        <h2 id="faq-title">Частые вопросы</h2>
+        <p>Не нашли ответ? Поддержка отвечает круглосуточно в тикетах и в Telegram, обычно в течение 10 минут.</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>Чем KVM отличается от OpenVZ и LXC?</summary>
+          <p>KVM запускает полноценную виртуальную машину со своим ядром. Можно ставить Docker, WireGuard, менять параметры ядра и использовать любую ОС. Память и ядра не делятся с соседями, поэтому производительность предсказуема.</p>
+        </details>
+        <details>
+          <summary>Можно установить свою операционную систему?</summary>
+          <p>Да. В панели есть готовые образы Ubuntu, Debian, AlmaLinux, Rocky и Windows Server. Свою систему можно поставить из ISO через консоль VNC.</p>
+        </details>
+        <details>
+          <summary>Как устроена оплата?</summary>
+          <p>Вы пополняете баланс картой российского банка, через СБП или по счёту для юрлиц. Стоимость сервера списывается раз в сутки. Удалили сервер, и списания прекратились.</p>
+        </details>
+        <details>
+          <summary>Можно сменить тариф без переустановки?</summary>
+          <p>Повысить тариф можно в любой момент: сервер перезагрузится с новыми ресурсами, данные останутся на месте. Понизить можно, если новый диск вмещает текущие данные.</p>
+        </details>
+        <details>
+          <summary>Что будет, если сервер атакуют?</summary>
+          <p>Фильтрация включается автоматически, вам ничего не нужно делать. Если атака превышает 1 Тбит/с, мы предупредим в Telegram и предложим временно перенести адрес в усиленную защиту.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band cta-band" aria-labelledby="cta-title">
+    <div class="wrap cta-inner">
+      <div>
+        <h2 id="cta-title">Первый сервер запустится быстрее, чем закипит чайник</h2>
+        <p>Регистрация по почте, оплата от одного дня.</p>
+      </div>
+      <a class="btn btn-fire" href="#pricing">Создать сервер</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="logo"><svg aria-hidden="true"><use href="#flame"/></svg>Fired Cloud</span>
+        <p>Виртуальные серверы на KVM в России и Европе.</p>
+      </div>
+      <div>
+        <h4>Продукт</h4>
+        <ul><li><a href="#pricing">Тарифы</a></li><li><a href="#features">Возможности</a></li><li><a href="#locations">Дата-центры</a></li><li><a href="#panel">Панель управления</a></li></ul>
+      </div>
+      <div>
+        <h4>Помощь</h4>
+        <ul><li><a href="#faq">Частые вопросы</a></li><li><a href="#top">Документация</a></li><li><a href="#top">Статус сети</a></li><li><a href="#top">API</a></li></ul>
+      </div>
+      <div>
+        <h4>Компания</h4>
+        <ul><li><a href="#top">О нас</a></li><li><a href="#top">Договор оферты</a></li><li><a href="#top">Политика конфиденциальности</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Fired Cloud</span>
+      <span>Цены указаны с НДС</span>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<!-- BODY:END -->
+</body>
+</html>
